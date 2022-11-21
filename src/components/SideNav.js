@@ -1,13 +1,14 @@
+import { Link } from "react-router-dom";
 export const SideNav = (props) => {
     return (
         <>
             {/* Main Sidebar Container */}
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
                 {/* Brand Logo */}
-                <a href="index3.html" className="brand-link">
+                  <Link to={"/dashboard"}  className="brand-link">
                     <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
                     <span className="brand-text font-weight-light">AdminLTE 3</span>
-                </a>
+                </Link>
                 {/* Sidebar */}
                 <div className="sidebar">
                     {/* Sidebar user panel (optional) */}
@@ -16,7 +17,7 @@ export const SideNav = (props) => {
                             <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
                         </div>
                         <div className="info">
-                            <a href="#" className="d-block">Alexander Pierce</a>
+                            <Link to={"/dashboard"} className="d-block">Alexander Pierce</Link>
                         </div>
                     </div>
                     {/* SidebarSearch Form */}

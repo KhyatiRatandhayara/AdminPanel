@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 
 const Login = () => {
     return (
@@ -12,7 +12,7 @@ const Login = () => {
                     <div className="card">
                         <div className="card-body login-card-body">
                             <p className="login-box-msg">Sign in to start your session</p>
-                            <form action="/dashboard">
+                            <form>
                                 <div className="input-group mb-3">
                                     <input type="email" className="form-control" placeholder="Email" />
                                     <div className="input-group-append">
@@ -40,7 +40,8 @@ const Login = () => {
                                     </div>
                                     {/* /.col */}
                                     <div className="col-4">
-                                        <button type="submit" className="btn btn-primary btn-block">Sign In</button>
+                                    <Link to={"/dashboard"} className="text-center">
+                                        <button type="submit" className="btn btn-primary btn-block">Sign In</button></Link>
                                     </div>
                                     {/* /.col */}
                                 </div>
@@ -56,10 +57,14 @@ const Login = () => {
                             </div>
                             {/* /.social-auth-links */}
                             <p className="mb-1">
-                                <a href="forgot-password.html">I forgot my password</a>
+                            <Link to={"/forgot-password"} >
+                            I forgot my password
+                            </Link>
                             </p>
                             <p className="mb-0">
-                                <a href="/register" className="text-center">Register a new membership</a>
+                            <Link to={"/register"} className="text-center">
+                            Register a new membership
+                            </Link>
                             </p>
                         </div>
                         {/* /.login-card-body */}

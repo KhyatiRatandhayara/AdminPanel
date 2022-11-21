@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import Login from './components/Login';
 import Register from './components/Register';
 import { SideNav } from './components/SideNav';
+import { ForgotPassword } from './components/ForgotPassword';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
      <Routes>
      <Route exact path={"/"} element={<Login />} />
       <Route exact path="/register" element={<Register/>} /> 
+      <Route exact path="/forgot-password" element={<ForgotPassword/>} /> 
       <Route exact path="/dashboard" element={ <>
               <Header />
               <SideNav />

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 
 const Register = () => {
     return (
@@ -10,7 +10,7 @@ const Register = () => {
                 <div className="card">
                     <div className="card-body register-card-body">
                         <p className="login-box-msg">Register a new membership</p>
-                        <form action="/">
+                        <form>
                             <div className="input-group mb-3">
                                 <input type="text" className="form-control" placeholder="Full name" />
                                 <div className="input-group-append">
@@ -54,7 +54,9 @@ const Register = () => {
                                 </div>
                                 {/* /.col */}
                                 <div className="col-4">
-                                    <button type="submit" className="btn btn-primary btn-block">Register</button>
+                                <Link to={"/"} className="text-center">
+                                <button type="submit" className="btn btn-primary btn-block">Register</button>
+                                </Link>
                                 </div>
                                 {/* /.col */}
                             </div>
@@ -70,7 +72,7 @@ const Register = () => {
                                 Sign up using Google+
                             </a>
                         </div>
-                        <a href="/" className="text-center">I already have a membership</a>
+                        <Link to={"/"} className="text-center">I already have a membership</Link>
                     </div>
                     {/* /.form-box */}
                 </div>{/* /.card */}
