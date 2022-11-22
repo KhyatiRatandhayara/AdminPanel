@@ -1,6 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from 'formik'
+import * as Yup from 'yup';
+import './Login.css'
 
 const Login = () => {
+  const navigate = useNavigate();
+    const initialValues = {
+        email: '',
+        password: ''
+    }
+    const validationSchema = Yup.object({
+        email: Yup.string().required("Email is required").email("Email is not valid"),
+        password : Yup.string().required("Password is required").min(6, "Password must be at least 6 characters").max(40, "Password must not exceed 40 characters"),
+    });
+    const formik = useFormik({
+        initialValues: initialValues,
+        validationSchema: validationSchema,
+        onSubmit: values => {
+            navigate('/dashboard');
+        },
+    });
+    
     return (
         <>
             <div className='hold-transition login-page'>
@@ -12,23 +32,26 @@ const Login = () => {
                     <div className="card">
                         <div className="card-body login-card-body">
                             <p className="login-box-msg">Sign in to start your session</p>
-                            <form>
+                            <form onSubmit={formik.handleSubmit}>
                                 <div className="input-group mb-3">
-                                    <input type="email" className="form-control" placeholder="Email" />
+                                    <input type="email" className="form-control" placeholder="Email" name="email" value={formik.values.email}  onChange={formik.handleChange} id="email"/>
                                     <div className="input-group-append">
                                         <div className="input-group-text">
                                             <span className="fas fa-envelope" />
                                         </div>
                                     </div>
                                 </div>
+                                {formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
+                              
                                 <div className="input-group mb-3">
-                                    <input type="password" className="form-control" placeholder="Password" />
+                                    <input type="password" className="form-control" placeholder="Password" value={formik.values.password}  onChange={formik.handleChange} name="password"/>
                                     <div className="input-group-append">
                                         <div className="input-group-text">
                                             <span className="fas fa-lock" />
                                         </div>
                                     </div>
                                 </div>
+                                {formik.errors.password ? <div className="error">{formik.errors.password}</div> : null}
                                 <div className="row">
                                     <div className="col-8">
                                         <div className="icheck-primary">
@@ -40,8 +63,7 @@ const Login = () => {
                                     </div>
                                     {/* /.col */}
                                     <div className="col-4">
-                                    <Link to={"/dashboard"} className="text-center">
-                                        <button type="submit" className="btn btn-primary btn-block">Sign In</button></Link>
+                                        <button type="submit" className="btn btn-primary btn-block">Sign In</button>
                                     </div>
                                     {/* /.col */}
                                 </div>
